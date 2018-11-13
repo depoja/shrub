@@ -34,6 +34,13 @@ func parseTokens(tokens *[]string) data.Data {
 		if f, err := strconv.ParseFloat(token, 64); err == nil {
 			return data.Number(f)
 		}
+
+		if token == "#f" {
+			return data.Boolean(false)
+		} else if token == "#t" {
+			return data.Boolean(true)
+		}
+
 		return data.Symbol(token)
 	}
 }

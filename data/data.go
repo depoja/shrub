@@ -8,3 +8,6 @@ type Symbol string
 
 // Number is represented as a float64
 type Number float64
+
+// Boolean is represented as a bool
+type Boolean bool

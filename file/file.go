@@ -7,12 +7,12 @@ import (
 	"shrub/data"
 	"shrub/evaluator"
 	"shrub/parser"
+	"shrub/repl"
 	"strings"
 )
 
 // Interpret reads a file with the given fileName and returns the programs result
 func Interpret(fileName string) {
-
 	file, err := os.Open(fileName)
 	if err != nil {
 		return
@@ -31,19 +31,5 @@ func Interpret(fileName string) {
 		}
 	}
 
-	fmt.Println("=", printable(result))
-}
-
-func printable(d data.Data) string {
-	switch d := d.(type) {
-	case []data.Data:
-		l := make([]string, len(d))
-		for i, x := range d {
-			l[i] = printable(x)
-		}
-		return "(" + strings.Join(l, " ") + ")"
-
-	default:
-		return fmt.Sprint(d)
-	}
+	fmt.Println("=", repl.Printable(result))
 }

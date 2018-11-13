@@ -10,6 +10,9 @@ func Eval(expression data.Data, env *Environment) data.Data {
 	var result data.Data
 
 	switch e := expression.(type) {
+	case data.Boolean:
+		result = e
+
 	case data.Number:
 		result = e
 

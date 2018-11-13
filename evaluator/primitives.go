@@ -7,6 +7,8 @@ import (
 	"shrub/data"
 )
 
+// TODO: Remove type casting from these primitives
+
 // Performs addition on a list
 func add(d ...data.Data) data.Data {
 	sum := d[0].(data.Number) // Set the sum to the first operand
@@ -41,6 +43,30 @@ func div(d ...data.Data) data.Data {
 		result /= num.(data.Number)
 	}
 	return result
+}
+
+// TODO: Add support for non-boolean operands
+func and(d ...data.Data) data.Data {
+	result := d[0].(data.Boolean) // Set the result to the first operand
+	for _, op := range d[1:] {
+		result = result && op.(data.Boolean)
+	}
+	return result
+}
+
+// TODO: Add support for non-boolean operands
+func or(d ...data.Data) data.Data {
+	result := d[0].(data.Boolean) // Set the result to the first operand
+	for _, op := range d[1:] {
+		result = result || op.(data.Boolean)
+	}
+	return result
+}
+
+// TODO: Add support for non-boolean operands
+func not(d ...data.Data) data.Data {
+	value := d[0].(data.Boolean)
+	return !value
 }
 
 // Compares (less than equal)
